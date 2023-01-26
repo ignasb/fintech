@@ -1,0 +1,36 @@
+@import "../../../theme.scss";
+
+:host {
+  .transactions__container {
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100%;
+  }
+
+  .transactions__header {
+    display: block;
+    padding: $padding-b;
+  }
+
+  .transactions__main {
+    display: flex;
+    flex-flow: row nowrap;
+    flex: 1 1 auto;
+
+    &__container {
+      display: flex;
+      flex-flow: column nowrap;
+      flex: 3 3 auto;
+    }
+
+    &__overview {
+      display: block;
+      padding: $padding-b;
+    }
+
+    &__requests {
+      flex: 1 1 auto;
+      background-color: hsl(0, 0%, 88%);
+    }
+  }
+}

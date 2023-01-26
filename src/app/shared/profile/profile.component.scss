@@ -1,0 +1,21 @@
+@import "../../../theme.scss";
+
+:host {
+  .profile {
+    display: flex;
+    width: 100%;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    &__image {
+      $dim: 32px;
+      height: $dim;
+      width: $dim;
+      border-radius: $dim;
+    }
+
+    &__name {
+      padding-left: $padding-s;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+<div class="input__container">
+  <mat-icon class="input__icon" *ngIf="!!icon">{{ icon }}</mat-icon>
+  <input
+    type="text"
+    class="input"
+    [attr.name]="name ? name : null"
+    [ngModel]="value"
+    [placeholder]="placeholder"
+    (ngModelChange)="onInputChanged($event)"
+  />
+</div>

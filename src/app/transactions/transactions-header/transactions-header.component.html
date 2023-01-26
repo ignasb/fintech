@@ -1,0 +1,13 @@
+<div class="transactions">
+  <h1>Transactions</h1>
+  <app-input
+    [icon]="'search'"
+    [isDebounced]="true"
+    [placeholder]="'Search transactions'"
+  ></app-input>
+  <app-button
+    class="transactions__requests"
+    [title]="'Pending requests'"
+    (clicked)="togglePendingRequests()"
+  ></app-button>
+</div>

@@ -1,0 +1,12 @@
+:host {
+  .transactions {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    flex-flow: row nowrap;
+
+    &__requests {
+      justify-self: flex-end;
+    }
+  }
+}

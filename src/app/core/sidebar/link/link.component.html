@@ -1,0 +1,11 @@
+<a class="link">
+  <mat-icon *ngIf="link.icon" class="icon" fontSet="material-icons-outlined">
+    {{ link.icon }}
+  </mat-icon>
+  {{ link.title }}
+  <app-badge
+    *ngIf="link.notifications"
+    [color]="'white'"
+    [text]="link.notifications"
+  ></app-badge>
+</a>

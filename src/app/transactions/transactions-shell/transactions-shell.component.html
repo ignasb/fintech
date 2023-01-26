@@ -1,0 +1,20 @@
+<div class="transactions__container">
+  <app-transactions-header
+    (onRequestsToggle)="toggleRequestSidebar()"
+    class="transactions__header"
+  ></app-transactions-header>
+  <div class="transactions__main">
+    <div class="transactions__main__container">
+      <app-transactions-overview
+        class="transactions__main__overview"
+      ></app-transactions-overview>
+      <app-transactions-details
+        class="transactions__main__details"
+      ></app-transactions-details>
+    </div>
+    <app-transactions-requests
+      *ngIf="isPendingRequestsVisible"
+      class="transactions__main__requests"
+    ></app-transactions-requests>
+  </div>
+</div>

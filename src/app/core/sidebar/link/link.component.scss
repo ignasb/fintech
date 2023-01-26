@@ -1,0 +1,17 @@
+:host {
+  .link {
+    display: flex;
+    align-items: center;
+    height: 2.5rem;
+    width: 100%;
+
+    &:hover {
+      background-color: #dcfe5a;
+      cursor: pointer;
+    }
+
+    .icon {
+      margin: 0.5rem;
+    }
+  }
+}

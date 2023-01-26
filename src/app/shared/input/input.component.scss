@@ -1,0 +1,22 @@
+@import "../../../theme.scss";
+
+:host {
+  .input__container {
+    position: relative;
+
+    .input {
+      height: 2.5rem;
+      border: 2px solid $smoke;
+      padding: 0 $padding-b 0 $padding-m;
+      width: 100%;
+    }
+
+    .input__icon {
+      position: absolute;
+      right: 8px;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+    }
+  }
+}

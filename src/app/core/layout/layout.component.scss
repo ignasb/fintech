@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  flex-flow: row nowrap;
+  height: 100vh;
+
+  .sidebar-container {
+    flex: 0 0 240px;
+  }
+
+  .main-container {
+    flex: 1 1 auto;
+  }
+}

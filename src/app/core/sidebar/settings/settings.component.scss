@@ -1,0 +1,14 @@
+@import "../../../../theme.scss";
+
+:host {
+  .settings {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-end;
+    padding: $padding-s 0rem;
+
+    &__label {
+      padding-left: $padding-s;
+    }
+  }
+}
