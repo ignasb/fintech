@@ -1,0 +1,126 @@
+<!-- Header snippet start -->
+<ng-template #header let-headingColumns="headingColumns">
+  <div class="heading">
+    <div
+      *ngFor="let col of headingColumns"
+      class="heading__column"
+      [ngStyle]="{
+        'flex-grow': col.ratio,
+        'flex-shrink': col.ratio,
+        'flex-basis': '0px'
+      }"
+    >
+      <span>{{ col.title }}</span>
+    </div>
+  </div>
+</ng-template>
+<!-- Header snippet end -->
+
+<!-- Row snippet start -->
+<ng-template #rows let-rows="rows">
+  <div class="row" *ngFor="let row of rows; let rowIdx = index">
+    <div
+      *ngFor="let col of row; let colIdx = index"
+      class="row__col"
+      [ngStyle]="{
+        'flex-grow': tableColumns[colIdx].ratio,
+        'flex-shrink': tableColumns[colIdx].ratio,
+        'flex-basis': '0px'
+      }"
+    >
+      <!-- TODO: RECHECK RATIO LOGIC IN TEMPLATE !-->
+      <ng-container [ngSwitch]="cellTypeMap.get(colIdx)">
+        <!-- Date cell start-->
+        <ng-container *ngSwitchCase="ECellType.Date">
+          <ng-container
+            *ngTemplateOutlet="date; context: { date: col }"
+          ></ng-container>
+        </ng-container>
+        <!-- Date cell end-->
+        <!-- Vendor cell start -->
+        <ng-container *ngSwitchCase="ECellType.Vendor">
+          <ng-container
+            *ngTemplateOutlet="vendor; context: { vendor: col }"
+          ></ng-container>
+        </ng-container>
+        <!-- Vendor cell end -->
+        <!-- Attachment cell start -->
+        <ng-container *ngSwitchCase="ECellType.Attachment">
+          <ng-container
+            *ngTemplateOutlet="attachment; context: { attachment: col }"
+          ></ng-container>
+        </ng-container>
+        <!-- Attachment cell end -->
+        <!-- Currency cell start -->
+        <ng-container *ngSwitchCase="ECellType.Currency">
+          <ng-container
+            *ngTemplateOutlet="amount; context: { amount: col }"
+          ></ng-container>
+        </ng-container>
+        <!-- Currency cell end -->
+        <!-- Default text cell start -->
+        <ng-container *ngSwitchDefault>
+          <span>{{ col }}</span>
+        </ng-container>
+        <!-- Default text cell end -->
+      </ng-container>
+      <!-- {{ col | formatTransactionCell : colIdx }} -->
+    </div>
+  </div>
+</ng-template>
+<!-- Row snippet end -->
+
+<!-- Date snippet start-->
+<ng-template #date let-date="date">
+  <span>{{ date | date }} </span>
+</ng-template>
+<!-- Date snippet end -->
+
+<!-- Vendor snippet start -->
+<ng-template #vendor let-vendor="vendor">
+  <div class="vendor">
+    <div class="vendor__icon">
+      <img [src]="vendor[0]" />
+    </div>
+    <div class="vendor__details">
+      <p>{{ vendor[1] }}</p>
+      <p>{{ vendor[2].join(", ") }}</p>
+    </div>
+  </div>
+</ng-template>
+<!-- Vendor snippet end -->
+
+<!-- Atachment snippet start -->
+<ng-template #attachment let-attachment="attachment">
+  <span *ngIf="attachment[0]"><mat-icon>receipt</mat-icon> </span>
+  <span *ngIf="attachment[1]"><mat-icon>text_snippet</mat-icon></span>
+</ng-template>
+<!-- Atachment snippet end -->
+
+<!-- Amount snippet start -->
+<ng-template #amount let-amount="amount">
+  <span>{{ amount | currency }} </span>
+</ng-template>
+<!-- Amount snippet end -->
+
+<div class="table">
+  <ng-container
+    *ngTemplateOutlet="
+      header;
+      context: {
+        headingColumns: tableColumns
+      }
+    "
+  ></ng-container>
+
+  <div class="table__rows">
+    <ng-container
+      *ngTemplateOutlet="
+        rows;
+        context: {
+          rows: tableRows
+        }
+      "
+    ></ng-container>
+  </div>
+</div>

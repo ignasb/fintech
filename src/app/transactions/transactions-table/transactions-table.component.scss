@@ -1,0 +1,88 @@
+@import "../../../theme.scss";
+
+:host {
+  .table {
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100%;
+
+    &__rows {
+      overflow-x: auto;
+    }
+  }
+
+  .heading {
+    display: flex;
+    flex-flow: row nowrap;
+    border-bottom: 1px solid $dark;
+    font-size: $font-size-s;
+
+    &__column {
+      padding: $padding-m $padding-s;
+      color: $dark-smoke;
+      letter-spacing: 0.065rem;
+
+      > span {
+        display: inline-block;
+        border-right: 1px solid $smoke;
+        width: 100%;
+      }
+    }
+  }
+
+  .row {
+    display: flex;
+    color: $light-smoke;
+    align-items: center;
+
+    &__col {
+      font-size: $font-size-s;
+      padding: $padding-m $padding-s;
+    }
+
+    &:hover {
+      .vendor__details p:first-child {
+        color: $white;
+      }
+
+      .row__col {
+        color: $smoke;
+      }
+
+      cursor: pointer;
+      background-color: $dark;
+    }
+
+    .vendor {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+
+      &__icon {
+        flex: 0 0 36px;
+
+        img {
+          max-width: 100%;
+        }
+      }
+
+      &__details {
+        padding-left: $padding-s;
+        font-size: $font-size-s;
+
+        > p {
+          margin: 0;
+        }
+
+        > p:first-child {
+          color: $dark;
+        }
+
+        > p:last-child {
+          padding-top: $padding-s;
+          font-size: $font-size-xxs;
+        }
+      }
+    }
+  }
+}

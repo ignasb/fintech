@@ -8,7 +8,6 @@
   }
 
   .transactions__header {
-    display: block;
     padding: $padding-b;
   }
 
@@ -16,6 +15,7 @@
     display: flex;
     flex-flow: row nowrap;
     flex: 1 1 auto;
+    overflow: hidden;
 
     &__container {
       display: flex;
@@ -25,12 +25,16 @@
 
     &__overview {
       display: block;
-      padding: $padding-b;
+      padding: 0 $padding-b $padding-b $padding-b;
     }
 
     &__requests {
       flex: 1 1 auto;
       background-color: hsl(0, 0%, 88%);
+    }
+
+    &__details {
+      overflow: hidden;
     }
   }
 }

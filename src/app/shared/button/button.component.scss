@@ -10,6 +10,7 @@
     height: 2.5rem;
     padding: 0 $padding-m;
     border: none;
+    font-size: $font-size-s;
 
     &:active {
       background-color: hsl(0, 2%, 20%);
