@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Link } from './link.type';
+import { Link } from '../sidebar.const';
 
 @Component({
   selector: 'app-link',

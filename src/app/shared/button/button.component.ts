@@ -13,8 +13,9 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {
-  @Input() title?: string;
-  @Input() count: number = 2;
+  @Input() title: string = '';
+  @Input() count?: number = 0;
+  @Input() isDisabled?: boolean = false;
 
   @Output() clicked: EventEmitter<void> = new EventEmitter();
 

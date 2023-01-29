@@ -4,8 +4,9 @@
     <app-link *ngFor="let link of links" [link]="link"></app-link>
   </div>
   <div class="sidebar__settings">
-    <app-profile></app-profile>
+    <app-link *ngFor="let link of settings" [link]="link"></app-link>
+    <!-- <app-profile></app-profile>
     <div class="sidebar__spacer"></div>
-    <app-settings></app-settings>
+    <app-settings></app-settings> -->
   </div>
 </div>

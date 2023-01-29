@@ -1,3 +1,9 @@
-<button class="button" (click)="onClick()" type="button">
-  {{ title }} <app-badge [color]="'dark-smoke'" [text]="count"></app-badge>
+<button
+  class="button"
+  (click)="onClick()"
+  type="button"
+  [disabled]="isDisabled"
+>
+  {{ title }}
+  <app-badge *ngIf="count" [color]="'dark-smoke'" [text]="count"></app-badge>
 </button>

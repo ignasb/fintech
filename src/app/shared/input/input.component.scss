@@ -5,11 +5,7 @@
     position: relative;
 
     .input {
-      height: 2.5rem;
-      border: 2px solid $smoke;
-      padding: 0 $padding-b 0 $padding-m;
-      width: 100%;
-      font-size: 0.85rem;
+      @include styled-input;
     }
 
     .input__icon {

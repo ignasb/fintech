@@ -1,0 +1,11 @@
+@import "../../../theme.scss";
+
+:host {
+  .profile-settings {
+    display: grid;
+    height: 100%;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 3fr 1.25fr;
+    flex-flow: row nowrap;
+  }
+}

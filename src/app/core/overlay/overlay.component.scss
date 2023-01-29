@@ -1,0 +1,7 @@
+@import "../../../theme.scss";
+
+:host {
+  height: 100vh;
+  display: block;
+  padding: $padding-b;
+}

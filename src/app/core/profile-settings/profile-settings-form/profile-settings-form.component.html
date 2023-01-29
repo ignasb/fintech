@@ -1,0 +1,173 @@
+<form class="profile-form" [formGroup]="profileForm" autocomplete="off">
+  <!-- First name input start -->
+  <section
+    class="profile-form__field"
+    [ngClass]="{ invalid: profileForm.controls.firstName.invalid }"
+  >
+    <label for="first-name">First name</label>
+    <input
+      autocomplete="off"
+      id="first-name"
+      type="text"
+      formControlName="firstName"
+    />
+    <ng-container
+      *ngTemplateOutlet="
+        validation;
+        context: {
+          errors: profileForm.controls.firstName.errors || {},
+          type: 'text'
+        }
+      "
+    >
+    </ng-container>
+  </section>
+  <!-- First name input end -->
+
+  <!-- Last name input start -->
+  <section
+    class="profile-form__field"
+    [ngClass]="{ invalid: profileForm.controls.lastName.invalid }"
+  >
+    <label for="last-name">Last name</label>
+    <input
+      autocomplete="off"
+      id="last-name"
+      type="text"
+      formControlName="lastName"
+    />
+    <ng-container
+      *ngTemplateOutlet="
+        validation;
+        context: {
+          errors: profileForm.controls.lastName.errors || {},
+          type: 'text'
+        }
+      "
+    >
+    </ng-container>
+  </section>
+  <!-- Last name input end -->
+
+  <!-- Email input start -->
+  <section
+    class="profile-form__field"
+    [ngClass]="{ invalid: profileForm.controls.email.invalid }"
+  >
+    <label for="email">Email</label>
+    <input id="email" type="text" formControlName="email" />
+    <ng-container
+      *ngTemplateOutlet="
+        validation;
+        context: {
+          errors: profileForm.controls.email.errors || {},
+          type: 'email'
+        }
+      "
+    >
+    </ng-container>
+  </section>
+  <!-- Email input end -->
+
+  <!-- Password input start -->
+  <section
+    class="profile-form__field"
+    [ngClass]="{
+      invalid: profileForm.controls.password.invalid || profileForm.errors
+    }"
+  >
+    <label for="password">Password</label>
+    <input
+      autocomplete="off"
+      id="password"
+      type="password"
+      formControlName="password"
+    />
+    <ng-container
+      *ngTemplateOutlet="
+        validation;
+        context: {
+          errors: profileForm.controls.password.errors || {},
+          formErrors: profileForm.errors || {},
+          type: 'password'
+        }
+      "
+    >
+    </ng-container>
+  </section>
+  <!-- Password input end -->
+
+  <!-- Repeat password input start -->
+  <section
+    class="profile-form__field"
+    [ngClass]="{
+      invalid: profileForm.controls.repeatPassword.invalid || profileForm.errors
+    }"
+  >
+    <label for="repeatPassword">Repeat password</label>
+    <input
+      autocomplete="off"
+      id="repeatPassword"
+      type="password"
+      formControlName="repeatPassword"
+    />
+    <ng-container
+      *ngTemplateOutlet="
+        validation;
+        context: {
+          errors: profileForm.controls.repeatPassword.errors || {},
+          formErrors: profileForm.errors || {},
+          type: 'password'
+        }
+      "
+    >
+    </ng-container>
+  </section>
+  <!-- Repeat password input end -->
+
+  <app-button
+    [isDisabled]="profileForm.invalid"
+    [title]="'Update profile'"
+    (clicked)="submitForm()"
+  ></app-button>
+</form>
+
+<ng-template
+  #validation
+  let-errors="errors"
+  let-type="type"
+  let-formErrors="formErrors"
+>
+  <div class="tooltip" *ngIf="errors || formErrors">
+    <p
+      *ngIf="type === 'text' || type === 'email' || type === 'password'"
+      [class.error]="errors.required"
+    >
+      Required field.
+    </p>
+    <p *ngIf="type === 'text'" [class.error]="errors.lettersOnly">
+      Only letters accepted.
+    </p>
+    <p *ngIf="type === 'email'" [class.error]="errors.emailInvalid">
+      Invalid email.
+    </p>
+    <p
+      *ngIf="type === 'text' || type === 'email' || type === 'password'"
+      [class.error]="errors.maxlength"
+    >
+      Maximum length of 30.
+    </p>
+    <p *ngIf="type === 'password'" [class.error]="errors.uppercaseRequired">
+      Uppercase letter required.
+    </p>
+    <p *ngIf="type === 'password'" [class.error]="errors.digitsRequired">
+      Number required.
+    </p>
+    <p
+      *ngIf="type === 'password'"
+      [class.error]="formErrors.notMatchingPasswords"
+    >
+      Matching passwords.
+    </p>
+  </div>
+</ng-template>

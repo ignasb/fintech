@@ -3,6 +3,8 @@ $smoke: hsl(0, 0%, 95%);
 $light-smoke: hsl(0, 0%, 68%);
 $dark-smoke: hsl(0, 2%, 34%);
 $dark: hsl(0, 2%, 16%);
+$bloody-red: hsl(360, 90%, 50%);
+$correct-green: hsl(120, 75%, 55%);
 $primary-color: hsl(72, 99%, 67%);
 
 $padding-b: 2rem;
@@ -12,3 +14,21 @@ $padding-s: 0.4rem;
 $font-size-xxs: 0.6rem;
 $font-size-xs: 0.75rem;
 $font-size-s: 0.85rem;
+
+@mixin styled-input {
+  height: 2.5rem;
+  @include border($smoke);
+  padding: 0 $padding-b 0 $padding-m;
+  width: 100%;
+  font-size: 0.85rem;
+  outline: none;
+
+  &:active,
+  &:focus {
+    @include border($primary-color);
+  }
+}
+
+@mixin border($color) {
+  border: 2px solid $color;
+}
