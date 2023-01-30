@@ -11,7 +11,7 @@ import { TransactionsSelectors } from 'src/app/store/selectors/transactions.sele
   styleUrls: ['./transactions-shell.component.scss'],
 })
 export class TransactionsShellComponent implements OnInit {
-  isPendingRequestsVisible: boolean = true;
+  isPendingRequestsVisible: boolean = false;
   availableSelections: string[] = [];
   transactionsRows$ = this.transactionsSelectors.getTransactionsRows$;
   transactionsOverview$ = this.transactionsSelectors.getTransactionsOverview$;
@@ -31,7 +31,6 @@ export class TransactionsShellComponent implements OnInit {
     this.transactionsService
       .getAvailableSelections$(search)
       .subscribe((selections) => {
-        console.log(selections);
         this.availableSelections = selections;
       });
   }
@@ -41,8 +40,11 @@ export class TransactionsShellComponent implements OnInit {
   }
 
   updateSuggestions(search: string): void {
-    console.log(search);
     this.setAvailableSelections(search);
+
+    if (!search) {
+      this.searchTransactions('');
+    }
   }
 
   toggleRequestSidebar(): void {

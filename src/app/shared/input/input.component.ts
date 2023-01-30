@@ -6,12 +6,9 @@ import {
   EventEmitter,
   HostListener,
   Input,
-  OnChanges,
-  OnInit,
   Output,
-  SimpleChanges,
+  ViewChild,
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
@@ -19,7 +16,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InputComponent implements OnChanges, OnInit {
+export class InputComponent {
   @Input()
   name?: string;
   @Input()
@@ -33,10 +30,12 @@ export class InputComponent implements OnChanges, OnInit {
   @Input()
   availableSelections: string[] = [];
 
+  @ViewChild('input')
+  inputRef?: ElementRef;
+
   @Output() inputChanged: EventEmitter<string> = new EventEmitter();
   @Output() itemSelected: EventEmitter<string> = new EventEmitter();
 
-  inputControl = new FormControl('');
   isDropdownVisible = false;
 
   @HostListener('document:click', ['$event'])
@@ -46,38 +45,23 @@ export class InputComponent implements OnChanges, OnInit {
     }
   }
 
-  constructor(private elRef: ElementRef) {}
-
-  ngOnInit(): void {}
-
-  ngOnChanges(changes: SimpleChanges): void {
-    const { value } = changes;
-    if (value && value.currentValue) {
-      this.inputControl.setValue(value.currentValue);
-    }
-  }
+  constructor(private elRef: ElementRef, private cd: ChangeDetectorRef) {}
 
   onInputChanged(text: string): void {
+    console.log(text);
     this.inputChanged.emit(text);
   }
 
   onItemSelect(event: MouseEvent, item: string): void {
-    this.inputControl.setValue(item);
+    if (this.inputRef) {
+      this.inputRef.nativeElement.value = item;
+    }
     this.itemSelected.emit(item);
+    // this.cd.detectChanges();
+    this.isDropdownVisible = false;
   }
 
   onInputClick(): void {
-    const { availableSelections } = this;
-    // this.isDropdownVisible =
-    // availableSelections && availableSelections.length > 0;
     this.isDropdownVisible = true;
-    console.log(this.isDropdownVisible);
-  }
-
-  onInputFocusOut(): void {
-    // blur event trigger on focus out & hiding "li" elements ignores click handler.
-    setTimeout(() => {
-      this.isDropdownVisible = false;
-    }, 0);
   }
 }

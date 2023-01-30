@@ -1,16 +1,23 @@
 <div class="input__container">
   <mat-icon class="input__icon" *ngIf="!!icon">{{ icon }}</mat-icon>
   <input
+    #input
     type="text"
     class="input"
     [attr.name]="name ? name : null"
-    [ngModel]="inputControl.value"
+    [ngModel]="value"
     [placeholder]="placeholder"
     (ngModelChange)="onInputChanged($event)"
     (click)="onInputClick()"
   />
-  <div [ngClass]="{ hidden: !isDropdownVisible }" class="input__dropdown">
-    <ul>
+  <div class="input__dropdown">
+    <ul
+      *ngIf="
+        isDropdownVisible &&
+        availableSelections &&
+        availableSelections.length > 0
+      "
+    >
       <li
         *ngFor="let selection of availableSelections"
         (click)="onItemSelect($event, selection)"
