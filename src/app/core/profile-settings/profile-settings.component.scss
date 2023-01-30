@@ -1,11 +1,22 @@
 @import "../../../theme.scss";
 
 :host {
+  display: block;
+  height: 100%;
+
   .profile-settings {
     display: grid;
     height: 100%;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 3fr 1.25fr;
-    flex-flow: row nowrap;
+  }
+
+  .profile-spinner {
+    height: 100%;
+    display: flex;
+
+    p {
+      margin: auto;
+    }
   }
 }

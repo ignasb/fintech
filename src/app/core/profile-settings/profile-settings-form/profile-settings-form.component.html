@@ -2,7 +2,7 @@
   <!-- First name input start -->
   <section
     class="profile-form__field"
-    [ngClass]="{ invalid: profileForm.controls.firstName.invalid }"
+    [ngClass]="{ invalid: profileForm.controls['firstName'].invalid }"
   >
     <label for="first-name">First name</label>
     <input
@@ -15,7 +15,7 @@
       *ngTemplateOutlet="
         validation;
         context: {
-          errors: profileForm.controls.firstName.errors || {},
+          errors: profileForm.controls['firstName'].errors || {},
           type: 'text'
         }
       "
@@ -27,7 +27,7 @@
   <!-- Last name input start -->
   <section
     class="profile-form__field"
-    [ngClass]="{ invalid: profileForm.controls.lastName.invalid }"
+    [ngClass]="{ invalid: profileForm.controls['lastName'].invalid }"
   >
     <label for="last-name">Last name</label>
     <input
@@ -40,7 +40,7 @@
       *ngTemplateOutlet="
         validation;
         context: {
-          errors: profileForm.controls.lastName.errors || {},
+          errors: profileForm.controls['lastName'].errors || {},
           type: 'text'
         }
       "
@@ -52,7 +52,7 @@
   <!-- Email input start -->
   <section
     class="profile-form__field"
-    [ngClass]="{ invalid: profileForm.controls.email.invalid }"
+    [ngClass]="{ invalid: profileForm.controls['email'].invalid }"
   >
     <label for="email">Email</label>
     <input id="email" type="text" formControlName="email" />
@@ -60,7 +60,7 @@
       *ngTemplateOutlet="
         validation;
         context: {
-          errors: profileForm.controls.email.errors || {},
+          errors: profileForm.controls['email'].errors || {},
           type: 'email'
         }
       "
@@ -73,7 +73,7 @@
   <section
     class="profile-form__field"
     [ngClass]="{
-      invalid: profileForm.controls.password.invalid || profileForm.errors
+      invalid: profileForm.controls['password'].invalid || profileForm.errors
     }"
   >
     <label for="password">Password</label>
@@ -87,7 +87,7 @@
       *ngTemplateOutlet="
         validation;
         context: {
-          errors: profileForm.controls.password.errors || {},
+          errors: profileForm.controls['password'].errors || {},
           formErrors: profileForm.errors || {},
           type: 'password'
         }
@@ -101,7 +101,8 @@
   <section
     class="profile-form__field"
     [ngClass]="{
-      invalid: profileForm.controls.repeatPassword.invalid || profileForm.errors
+      invalid:
+        profileForm.controls['repeatPassword'].invalid || profileForm.errors
     }"
   >
     <label for="repeatPassword">Repeat password</label>
@@ -115,7 +116,7 @@
       *ngTemplateOutlet="
         validation;
         context: {
-          errors: profileForm.controls.repeatPassword.errors || {},
+          errors: profileForm.controls['repeatPassword'].errors || {},
           formErrors: profileForm.errors || {},
           type: 'password'
         }
@@ -126,6 +127,7 @@
   <!-- Repeat password input end -->
 
   <app-button
+    class="profile-form__submit"
     [isDisabled]="profileForm.invalid"
     [title]="'Update profile'"
     (clicked)="submitForm()"

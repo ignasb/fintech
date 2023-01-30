@@ -16,6 +16,7 @@
 
     &__field {
       position: relative;
+
       &.invalid {
         input {
           @include border($bloody-red);
@@ -31,6 +32,10 @@
           font-size: $font-size-xs;
         }
       }
+    }
+
+    &__submit {
+      margin-left: auto;
     }
   }
 }

@@ -12,6 +12,9 @@ import { ProfileComponent } from '../shared/profile/profile.component';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileSettingsFormComponent } from './profile-settings/profile-settings-form/profile-settings-form.component';
+import { mockBackendProvider } from './interceptors/mock-backend-interceptor.interceptor';
+import { UserService } from './services/user.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -38,8 +41,10 @@ const routes: Routes = [
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forChild(routes),
   ],
+  providers: [mockBackendProvider, UserService],
   exports: [LayoutComponent],
 })
 export class CoreModule {}

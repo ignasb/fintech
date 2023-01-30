@@ -7,7 +7,9 @@ import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginModule } from './login/login.module';
 import { TransactionsModule } from './transactions/transactions.module';
-
+import { AppStoreModule } from './store/app-store.module';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -17,6 +19,9 @@ import { TransactionsModule } from './transactions/transactions.module';
     LoginModule,
     TransactionsModule,
     CoreModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot({}),
+    AppStoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
