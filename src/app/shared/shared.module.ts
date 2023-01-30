@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { BadgeComponent } from './badge/badge.component';
 import { ProfileComponent } from './profile/profile.component';
 import { InputComponent } from './input/input.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonComponent } from './button/button.component';
 
 @NgModule({
@@ -14,7 +14,7 @@ import { ButtonComponent } from './button/button.component';
     InputComponent,
     ButtonComponent,
   ],
-  imports: [CommonModule, MatIconModule, FormsModule],
+  imports: [CommonModule, MatIconModule, FormsModule, ReactiveFormsModule],
   exports: [
     FormsModule,
     MatIconModule,
@@ -22,6 +22,7 @@ import { ButtonComponent } from './button/button.component';
     ProfileComponent,
     InputComponent,
     ButtonComponent,
+    ReactiveFormsModule,
   ],
 })
 export class SharedModule {}

@@ -23,6 +23,11 @@ export const userReducer = createReducer<IUserState>(
     isLoading: false,
     data: { ...user },
   })),
+  on(UserActions.loginFail, (state, { error }) => ({
+    ...state,
+    isLoading: false,
+    error,
+  })),
   on(UserActions.getProfile, (state) => {
     return {
       ...state,
@@ -49,7 +54,6 @@ export const userReducer = createReducer<IUserState>(
     data: { ...user },
   })),
   on(UserActions.updateProfileFail, (state, { error }) => {
-    console.log(error);
     return {
       ...state,
       isLoading: false,

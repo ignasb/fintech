@@ -1,15 +1,20 @@
 <div class="transactions__container">
   <app-transactions-header
+    [availableSelections]="availableSelections"
     (onRequestsToggle)="toggleRequestSidebar()"
+    (onSearchTransactions)="searchTransactions($event)"
+    (onSearchUpdate)="updateSuggestions($event)"
     class="transactions__header"
   ></app-transactions-header>
   <div class="transactions__main">
     <div class="transactions__main__container">
       <app-transactions-overview
         class="transactions__main__overview"
+        [overview]="transactionsOverview$ | async"
       ></app-transactions-overview>
       <app-transactions-details
         class="transactions__main__details"
+        [tableRows]="transactionsRows$ | async"
       ></app-transactions-details>
     </div>
     <app-transactions-requests

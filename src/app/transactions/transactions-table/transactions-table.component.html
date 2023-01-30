@@ -64,7 +64,6 @@
         </ng-container>
         <!-- Default text cell end -->
       </ng-container>
-      <!-- {{ col | formatTransactionCell : colIdx }} -->
     </div>
   </div>
 </ng-template>
@@ -118,7 +117,7 @@
       *ngTemplateOutlet="
         rows;
         context: {
-          rows: tableRows
+          rows: tableRows || []
         }
       "
     ></ng-container>

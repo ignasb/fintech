@@ -7,6 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './effects/user.effects';
 import { RouterEffects } from './effects/router.effects';
 import { SessionStorageEffects } from './effects/session.effects';
+import { TransactionsEffects } from './effects/transactions.effects';
 
 @NgModule({
   declarations: [],
@@ -18,6 +19,7 @@ import { SessionStorageEffects } from './effects/session.effects';
       UserEffects,
       RouterEffects,
       SessionStorageEffects,
+      TransactionsEffects,
     ]),
   ],
 })

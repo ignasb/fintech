@@ -16,6 +16,7 @@ import { mockBackendProvider } from './interceptors/mock-backend-interceptor.int
 import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileSettingsOverviewComponent } from './profile-settings/profile-settings-overview/profile-settings-overview.component';
+import { TransactionsService } from './services/transactions.service';
 
 const routes: Routes = [
   {
@@ -46,7 +47,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forChild(routes),
   ],
-  providers: [mockBackendProvider, UserService],
+  providers: [mockBackendProvider, UserService, TransactionsService],
   exports: [LayoutComponent],
 })
 export class CoreModule {}

@@ -4,8 +4,19 @@
     type="text"
     class="input"
     [attr.name]="name ? name : null"
-    [ngModel]="value"
+    [ngModel]="inputControl.value"
     [placeholder]="placeholder"
     (ngModelChange)="onInputChanged($event)"
+    (click)="onInputClick()"
   />
+  <div [ngClass]="{ hidden: !isDropdownVisible }" class="input__dropdown">
+    <ul>
+      <li
+        *ngFor="let selection of availableSelections"
+        (click)="onItemSelect($event, selection)"
+      >
+        {{ selection }}
+      </li>
+    </ul>
+  </div>
 </div>

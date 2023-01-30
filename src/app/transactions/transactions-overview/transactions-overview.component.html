@@ -5,14 +5,14 @@
   </div>
   <div class="details__count">
     <p>Transactions</p>
-    <p>95</p>
+    <p>{{ overview?.count }}</p>
   </div>
   <div class="details__total-spent">
     <p>Total Spent</p>
-    <p>$12,492.20</p>
+    <p>{{ overview?.amount | currency }}</p>
   </div>
   <div class="details__cashback">
     <p>Total cashback</p>
-    <p>$249.84 (2%)</p>
+    <p>{{ overview?.cashback | currency }}</p>
   </div>
 </div>

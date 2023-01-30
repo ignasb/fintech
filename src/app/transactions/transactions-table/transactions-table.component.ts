@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
-  ECellDataType,
-  transactionCellTypeMap,
-  TransactionTableCol,
-  TransactionTableRow,
-} from '../transactions.const';
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
+import { TransactionsModel } from 'src/app/core/models';
 
 @Component({
   selector: 'app-transactions-table',
@@ -13,70 +14,16 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransactionsTableComponent {
-  cellTypeMap = transactionCellTypeMap;
-  ECellType = ECellDataType;
+  @Input()
+  tableRows!: TransactionsModel.TransactionTableRow[] | null;
 
-  tableColumns: TransactionTableCol[] = [
+  cellTypeMap = TransactionsModel.transactionCellTypeMap;
+  ECellType = TransactionsModel.ECellDataType;
+
+  tableColumns: TransactionsModel.TransactionTableCol[] = [
     { title: 'Date', ratio: 1 },
     { title: 'Vendor', ratio: 3 },
     { title: 'Attachment', ratio: 1 },
     { title: 'Amount', ratio: 1 },
-  ];
-
-  tableRows: TransactionTableRow[] = [
-    [
-      '2023-01-01T12:40:00Z',
-      ['/assets/apple.png', 'Apple Store', ['Electronics', 'Consumer']],
-      ['12345', 'Sample notes text'],
-      '3456',
-    ],
-    [
-      '2023-01-01T12:40:00Z',
-      ['/assets/apple.png', 'Apple Store', ['Electronics', 'Consumer']],
-      ['12345', 'Sample notes text'],
-      '3456',
-    ],
-    [
-      '2023-01-01T12:40:00Z',
-      ['/assets/apple.png', 'Apple Store', ['Electronics', 'Consumer']],
-      ['12345', 'Sample notes text'],
-      '3456',
-    ],
-    [
-      '2023-01-01T12:40:00Z',
-      ['/assets/apple.png', 'Apple Store', ['Electronics', 'Consumer']],
-      ['12345', 'Sample notes text'],
-      '3456',
-    ],
-    [
-      '2023-01-01T12:40:00Z',
-      ['/assets/apple.png', 'Apple Store', ['Electronics', 'Consumer']],
-      ['12345', 'Sample notes text'],
-      '3456',
-    ],
-    [
-      '2023-01-01T12:40:00Z',
-      ['/assets/apple.png', 'Apple Store', ['Electronics', 'Consumer']],
-      ['12345', 'Sample notes text'],
-      '3456',
-    ],
-    [
-      '2023-01-01T12:40:00Z',
-      ['/assets/apple.png', 'Apple Store', ['Electronics', 'Consumer']],
-      ['12345', 'Sample notes text'],
-      '3456',
-    ],
-    [
-      '2023-01-01T12:40:00Z',
-      ['/assets/apple.png', 'Apple Store', ['Electronics', 'Consumer']],
-      ['12345', 'Sample notes text'],
-      '3456',
-    ],
-    [
-      '2023-01-01T12:40:00Z',
-      ['/assets/apple.png', 'Apple Store', ['Electronics', 'Consumer']],
-      ['12345', 'Sample notes text'],
-      '3456',
-    ],
   ];
 }

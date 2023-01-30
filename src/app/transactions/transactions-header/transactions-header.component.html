@@ -4,6 +4,9 @@
     [icon]="'search'"
     [isDebounced]="true"
     [placeholder]="'Search transactions'"
+    [availableSelections]="availableSelections"
+    (itemSelected)="itemSelected($event)"
+    (inputChanged)="searchChanged($event)"
   ></app-input>
   <app-button
     class="transactions__requests"

@@ -9,7 +9,8 @@ import { TransactionsOverviewComponent } from './transactions-overview/transacti
 import { TransactionsHeaderComponent } from './transactions-header/transactions-header.component';
 import { SharedModule } from '../shared/shared.module';
 import { TransactionsTableComponent } from './transactions-table/transactions-table.component';
-import { FormatTransactionCellPipe } from './pipes/format-transaction-row.pipe';
+// import { FormatTransactionCellPipe } from './pipes/format-transaction-row.pipe';
+import { TransactionsSelectors } from '../store/selectors/transactions.selectors';
 
 @NgModule({
   declarations: [
@@ -19,9 +20,9 @@ import { FormatTransactionCellPipe } from './pipes/format-transaction-row.pipe';
     TransactionsRequestsComponent,
     TransactionsHeaderComponent,
     TransactionsTableComponent,
-    FormatTransactionCellPipe,
+    // FormatTransactionCellPipe,
   ],
-  providers: [DatePipe, CurrencyPipe],
+  providers: [DatePipe, CurrencyPipe, TransactionsSelectors],
   imports: [CommonModule, TransactionsRoutingModule, SharedModule],
 })
 export class TransactionsModule {}
