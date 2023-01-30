@@ -1,19 +1,19 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { UserModel } from 'src/app/core/models';
 import { UserActions } from 'src/app/store/actions';
 import { IAppState } from 'src/app/store/reducers';
 import { UserSelectors } from 'src/app/store/selectors/user.selectors';
-import { UserModel } from '../models';
 
 @Component({
-  selector: 'app-profile-settings',
-  templateUrl: './profile-settings.component.html',
-  styleUrls: ['./profile-settings.component.scss'],
+  selector: 'app-login-shell',
+  templateUrl: './login-shell.component.html',
+  styleUrls: ['./login-shell.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProfileSettingsComponent implements OnInit {
-  user$ = this.userSelectors.getUser$;
-  isUserLoading$ = this.userSelectors.isUserLoading$;
+export class LoginShellComponent implements OnInit {
+  isLoggingIn$!: Observable<boolean>;
 
   constructor(
     private store$: Store<IAppState>,
@@ -21,10 +21,10 @@ export class ProfileSettingsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.store$.dispatch(UserActions.getProfile());
+    this.isLoggingIn$ = this.userSelectors.isUserLoading$;
   }
 
-  updateProfile(user: UserModel.IUser): void {
-    this.store$.dispatch(UserActions.updateProfile({ user }));
+  login(credentials: UserModel.IUserLogin) {
+    this.store$.dispatch(UserActions.login({ credentials }));
   }
 }

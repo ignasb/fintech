@@ -8,15 +8,15 @@
     <input
       autocomplete="off"
       id="first-name"
-      type="text"
       formControlName="firstName"
+      [attr.type]="EFormField.Text"
     />
     <ng-container
       *ngTemplateOutlet="
         validation;
         context: {
           errors: profileForm.controls['firstName'].errors || {},
-          type: 'text'
+          type: EFormField.Text
         }
       "
     >
@@ -33,15 +33,15 @@
     <input
       autocomplete="off"
       id="last-name"
-      type="text"
       formControlName="lastName"
+      [attr.type]="EFormField.Text"
     />
     <ng-container
       *ngTemplateOutlet="
         validation;
         context: {
           errors: profileForm.controls['lastName'].errors || {},
-          type: 'text'
+          type: EFormField.Text
         }
       "
     >
@@ -55,13 +55,13 @@
     [ngClass]="{ invalid: profileForm.controls['email'].invalid }"
   >
     <label for="email">Email</label>
-    <input id="email" type="text" formControlName="email" />
+    <input id="email" formControlName="email" [attr.type]="EFormField.Email" />
     <ng-container
       *ngTemplateOutlet="
         validation;
         context: {
           errors: profileForm.controls['email'].errors || {},
-          type: 'email'
+          type: EFormField.Email
         }
       "
     >
@@ -80,8 +80,8 @@
     <input
       autocomplete="off"
       id="password"
-      type="password"
       formControlName="password"
+      [attr.type]="EFormField.Password"
     />
     <ng-container
       *ngTemplateOutlet="
@@ -89,7 +89,7 @@
         context: {
           errors: profileForm.controls['password'].errors || {},
           formErrors: profileForm.errors || {},
-          type: 'password'
+          type: EFormField.Password
         }
       "
     >
@@ -109,8 +109,8 @@
     <input
       autocomplete="off"
       id="repeatPassword"
-      type="password"
       formControlName="repeatPassword"
+      [attr.type]="EFormField.Password"
     />
     <ng-container
       *ngTemplateOutlet="
@@ -118,7 +118,7 @@
         context: {
           errors: profileForm.controls['repeatPassword'].errors || {},
           formErrors: profileForm.errors || {},
-          type: 'password'
+          type: EFormField.Password
         }
       "
     >
@@ -128,9 +128,9 @@
 
   <app-button
     class="profile-form__submit"
-    [isDisabled]="profileForm.invalid"
+    [isDisabled]="!(profileForm.dirty && profileForm.valid)"
     [title]="'Update profile'"
-    (clicked)="submitForm()"
+    (clicked)="submitForm(profileForm.value, profileForm.valid)"
   ></app-button>
 </form>
 
@@ -142,34 +142,61 @@
 >
   <div class="tooltip" *ngIf="errors || formErrors">
     <p
-      *ngIf="type === 'text' || type === 'email' || type === 'password'"
+      *ngIf="
+        type === EFormField.Text ||
+        type === EFormField.Password ||
+        type === EFormField.Password
+      "
       [class.error]="errors.required"
     >
-      Required field.
-    </p>
-    <p *ngIf="type === 'text'" [class.error]="errors.lettersOnly">
-      Only letters accepted.
-    </p>
-    <p *ngIf="type === 'email'" [class.error]="errors.emailInvalid">
-      Invalid email.
+      Required field
     </p>
     <p
-      *ngIf="type === 'text' || type === 'email' || type === 'password'"
+      *ngIf="type === EFormField.Password"
+      [class.error]="errors.required || errors.minlength"
+    >
+      Minimum length of 8
+    </p>
+    <p
+      *ngIf="
+        type === EFormField.Text ||
+        type === EFormField.Email ||
+        type === EFormField.Password
+      "
       [class.error]="errors.maxlength"
     >
-      Maximum length of 30.
+      Maximum length of 30
     </p>
-    <p *ngIf="type === 'password'" [class.error]="errors.uppercaseRequired">
-      Uppercase letter required.
+    <p *ngIf="type === EFormField.Text" [class.error]="errors.lettersOnly">
+      Only letters accepted
     </p>
-    <p *ngIf="type === 'password'" [class.error]="errors.digitsRequired">
-      Number required.
+    <p *ngIf="type === EFormField.Email" [class.error]="errors.emailInvalid">
+      Invalid email
+    </p>
+
+    <p
+      *ngIf="type === EFormField.Password"
+      [class.error]="errors.uppercaseRequired"
+    >
+      Uppercase letter required
     </p>
     <p
-      *ngIf="type === 'password'"
+      *ngIf="type === EFormField.Password"
+      [class.error]="errors.digitsRequired"
+    >
+      Number required
+    </p>
+    <p
+      *ngIf="type === EFormField.Password"
       [class.error]="formErrors.notMatchingPasswords"
     >
-      Matching passwords.
+      Matching passwords
+    </p>
+    <p
+      *ngIf="type === EFormField.Password"
+      [class.error]="errors.containsNotAllowedChar"
+    >
+      Only allowed characters
     </p>
   </div>
 </ng-template>

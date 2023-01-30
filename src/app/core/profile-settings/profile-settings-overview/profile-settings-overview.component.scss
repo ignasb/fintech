@@ -1,0 +1,36 @@
+@import "../../../../theme.scss";
+
+:host {
+  .profile-overview {
+    padding: 0 $padding-m;
+    padding-top: $padding-b;
+
+    &__photo {
+      display: block;
+      margin: 0 auto;
+      border-radius: 100px;
+      max-width: 100%;
+    }
+
+    &__name {
+      font-size: 1.2rem;
+      padding: $padding-s 0;
+      text-align: center;
+    }
+
+    &__joined {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      gap: $padding-m;
+
+      span:first-child {
+        font-weight: 500;
+      }
+
+      span:last-child {
+        font-size: $font-size-s;
+      }
+    }
+  }
+}

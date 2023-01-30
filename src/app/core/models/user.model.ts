@@ -4,4 +4,10 @@ export interface IUser {
   email: string;
   password: string;
   joinedDate: string;
+  photoUrl: string;
+}
+
+export interface IUserLogin {
+  username: string;
+  password: string;
 }

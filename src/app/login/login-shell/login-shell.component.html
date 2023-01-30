@@ -1,0 +1,5 @@
+<app-login-form
+  *ngIf="!(isLoggingIn$ | async)"
+  (login)="login($event)"
+></app-login-form>
+<p *ngIf="isLoggingIn$ | async">Loading...</p>

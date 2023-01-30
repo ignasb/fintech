@@ -5,6 +5,8 @@ import { reducers } from './reducers';
 import { UserSelectors } from './selectors/user.selectors';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './effects/user.effects';
+import { RouterEffects } from './effects/router.effects';
+import { SessionStorageEffects } from './effects/session.effects';
 
 @NgModule({
   declarations: [],
@@ -12,7 +14,11 @@ import { UserEffects } from './effects/user.effects';
   imports: [
     CommonModule,
     StoreModule.forFeature('appState', reducers),
-    EffectsModule.forFeature([UserEffects]),
+    EffectsModule.forFeature([
+      UserEffects,
+      RouterEffects,
+      SessionStorageEffects,
+    ]),
   ],
 })
 export class AppStoreModule {}

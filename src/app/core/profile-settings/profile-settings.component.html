@@ -5,13 +5,16 @@
 <ng-template #profile>
   <div class="profile-settings">
     <div class="profile-settings__logo">
-      <app-profile></app-profile>
+      <app-profile-settings-overview
+        [user]="user$ | async"
+      ></app-profile-settings-overview>
     </div>
 
     <div class="profile-settings__form">
       <h1>Profile Information</h1>
       <app-profile-settings-form
         [user]="user$ | async"
+        (updateProfile)="updateProfile($event)"
       ></app-profile-settings-form>
     </div>
   </div>

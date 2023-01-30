@@ -14,6 +14,15 @@ const initialState: IUserState = {
 
 export const userReducer = createReducer<IUserState>(
   initialState,
+  on(UserActions.login, (state) => ({
+    ...state,
+    isLoading: true,
+  })),
+  on(UserActions.loginSuccess, (state, { user }) => ({
+    ...state,
+    isLoading: false,
+    data: { ...user },
+  })),
   on(UserActions.getProfile, (state) => {
     return {
       ...state,
@@ -25,8 +34,26 @@ export const userReducer = createReducer<IUserState>(
     data: { ...user },
     isLoading: false,
   })),
-  on(UserActions.getProfileFail, (state) => ({
+  on(UserActions.getProfileFail, (state, { error }) => ({
     ...state,
     isLoading: false,
-  }))
+    error,
+  })),
+  on(UserActions.updateProfile, (state) => ({
+    ...state,
+    isLoading: true,
+  })),
+  on(UserActions.updateProfileSuccess, (state, { user }) => ({
+    ...state,
+    isLoading: false,
+    data: { ...user },
+  })),
+  on(UserActions.updateProfileFail, (state, { error }) => {
+    console.log(error);
+    return {
+      ...state,
+      isLoading: false,
+      error,
+    };
+  })
 );

@@ -1,5 +1,11 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
+export enum EFormFieldType {
+  Text = 'text',
+  Password = 'password',
+  Email = 'email',
+}
+
 /**
  * Simple text validator for checking only letters in a string.
  */
@@ -25,7 +31,7 @@ export const emailValidator = (): ValidatorFn => {
 };
 
 /**
- * Simple uppercase validator.
+ * Uppercase validator.
  */
 export const upperCaseValidator = (): ValidatorFn => {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -39,7 +45,7 @@ export const upperCaseValidator = (): ValidatorFn => {
 };
 
 /**
- * Simple digits validator.
+ * Digits validator.
  */
 export const digitsValidator = (): ValidatorFn => {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -61,5 +67,19 @@ export const matchingPasswordsValidator = (): ValidatorFn => {
     return password && repeatPassword && password === repeatPassword
       ? null
       : { notMatchingPasswords: { value: 'not matching' } };
+  };
+};
+
+/**
+ * Very simple password validator for not allowed symbols
+ */
+export const passwordValidator = (): ValidatorFn => {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const notAllowedCharsRegEx = /[^\w!]+/;
+    const isPasswordValid = !notAllowedCharsRegEx.test(control.value);
+
+    return control.value && isPasswordValid
+      ? null
+      : { containsNotAllowedChar: { value: control.value } };
   };
 };

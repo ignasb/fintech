@@ -6,6 +6,7 @@ import {
   HttpInterceptor,
   HttpResponse,
   HTTP_INTERCEPTORS,
+  HttpErrorResponse,
 } from '@angular/common/http';
 import { delay, Observable, of } from 'rxjs';
 import { mockedProfileData } from './mocked-backend-interceptor.const';
@@ -24,10 +25,29 @@ export class MockBackendInterceptorInterceptor implements HttpInterceptor {
   handleRequest(req: HttpRequest<any>, next: HttpHandler): any {
     const { url, method } = req;
 
-    if (url.endsWith('/profile') && method === 'GET') {
-      return of(
-        new HttpResponse({ status: 200, body: mockedProfileData })
-      ).pipe(delay(1000));
+    if (url.endsWith('/profile')) {
+      if (method === 'GET') {
+        return of(
+          new HttpResponse({ status: 200, body: mockedProfileData })
+        ).pipe(delay(1000));
+      }
+
+      if (method === 'PUT') {
+        return of(
+          new HttpResponse({
+            status: 200,
+            body: { ...mockedProfileData, ...req.body },
+          })
+        ).pipe(delay(1000));
+      }
+    }
+
+    if (url.endsWith('/login')) {
+      if (method === 'POST') {
+        return of(
+          new HttpResponse({ status: 200, body: mockedProfileData })
+        ).pipe(delay(1000));
+      }
     }
   }
 }

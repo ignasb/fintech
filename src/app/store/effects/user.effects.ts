@@ -7,13 +7,37 @@ import { UserActions } from '../actions';
 
 @Injectable()
 export class UserEffects {
-  public getUserProfile$ = createEffect(() => {
+  login$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(UserActions.login),
+      switchMap(({ credentials }) =>
+        this.userService.login$(credentials).pipe(
+          map((user) => UserActions.loginSuccess({ user })),
+          catchError((error) => of(UserActions.loginFail({ error })))
+        )
+      )
+    );
+  });
+
+  getUserProfile$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(UserActions.getProfile),
       switchMap(() =>
-        this.userService.getDetails$().pipe(
+        this.userService.getProfile$().pipe(
           map((user) => UserActions.getProfileSuccess({ user })),
-          catchError((error) => of(UserActions.getProfileFail())) // TODO: Implement error state & handling
+          catchError((error) => of(UserActions.getProfileFail({ error }))) // TODO: Implement error state & handling
+        )
+      )
+    );
+  });
+
+  updateUserProfile$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(UserActions.updateProfile),
+      switchMap(({ user }) =>
+        this.userService.updateProfile$(user).pipe(
+          map((user) => UserActions.updateProfileSuccess({ user })),
+          catchError((error) => of(UserActions.updateProfileFail({ error })))
         )
       )
     );

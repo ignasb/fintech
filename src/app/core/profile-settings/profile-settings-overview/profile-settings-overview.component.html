@@ -1,0 +1,10 @@
+<div class="profile-overview">
+  <img class="profile-overview__photo" [src]="user?.photoUrl" />
+  <p class="profile-overview__name">
+    {{ user?.firstName }}&nbsp;{{ user?.lastName }}
+  </p>
+  <p class="profile-overview__joined">
+    <span>Member since:</span>
+    <span>{{ joinedDate | date : "longDate" }}</span>
+  </p>
+</div>

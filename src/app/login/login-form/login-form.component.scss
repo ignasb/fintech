@@ -1,0 +1,54 @@
+@import "../../../theme.scss";
+
+:host {
+  display: block;
+  width: 30%;
+  height: 380px;
+  border: 1px solid $light-smoke;
+  padding: 0 $padding-b $padding-b $padding-b;
+
+  img {
+    width: 140px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .login-form {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: $padding-m;
+
+    h1 {
+      margin-top: 0;
+    }
+
+    input {
+      @include styled-input;
+    }
+
+    &__field {
+      position: relative;
+
+      &.invalid {
+        input {
+          @include border($bloody-red);
+
+          &:focus + .tooltip {
+            display: flex;
+          }
+        }
+
+        span {
+          color: $bloody-red;
+          display: inline-block;
+          font-size: $font-size-xs;
+        }
+      }
+    }
+
+    &__submit {
+      margin-left: auto;
+    }
+  }
+}

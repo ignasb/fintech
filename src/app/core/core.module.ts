@@ -15,6 +15,7 @@ import { ProfileSettingsFormComponent } from './profile-settings/profile-setting
 import { mockBackendProvider } from './interceptors/mock-backend-interceptor.interceptor';
 import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ProfileSettingsOverviewComponent } from './profile-settings/profile-settings-overview/profile-settings-overview.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,7 @@ const routes: Routes = [
     OverlayComponent,
     ProfileSettingsComponent,
     ProfileSettingsFormComponent,
+    ProfileSettingsOverviewComponent,
   ],
   imports: [
     CommonModule,

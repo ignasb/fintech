@@ -1,5 +1,6 @@
 <button
   class="button"
+  [ngClass]="{ 'button--full-width': size === 'full-width' }"
   (click)="onClick()"
   type="button"
   [disabled]="isDisabled"

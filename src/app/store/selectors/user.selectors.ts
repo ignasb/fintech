@@ -5,7 +5,8 @@ import {
   select,
   Store,
 } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
+import { UserModel } from 'src/app/core/models';
 import { IAppState } from '../reducers';
 
 const getAppState = createFeatureSelector<IAppState>('appState');
@@ -20,6 +21,11 @@ const getIsUserLoading = createSelector(
 export class UserSelectors {
   getUser$ = this.store$.pipe(select(getUserState));
   isUserLoading$ = this.store$.pipe(select(getIsUserLoading));
+  isLoggedIn$ = this.getUser$.pipe(map(this.isUserDataEmpty));
 
   constructor(private store$: Store<IAppState>) {}
+
+  isUserDataEmpty(user: UserModel.IUser): boolean {
+    return Object.keys(user).length > 0;
+  }
 }

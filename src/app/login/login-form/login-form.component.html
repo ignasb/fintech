@@ -1,0 +1,38 @@
+<img [src]="'/assets/logo.svg'" />
+
+<form
+  class="login-form"
+  (keyup.enter)="submitLogin(loginForm.value)"
+  [formGroup]="loginForm"
+>
+  <!-- First username input start -->
+  <section class="login-form__field">
+    <label for="login">Username</label>
+    <input
+      autocomplete="off"
+      id="login"
+      formControlName="username"
+      type="text"
+    />
+  </section>
+  <!-- First username input end -->
+
+  <!-- Password input start -->
+  <section class="login-form__field">
+    <label for="password">Password</label>
+    <input
+      autocomplete="off"
+      id="password"
+      formControlName="password"
+      type="password"
+    />
+  </section>
+  <!-- Password input end -->
+
+  <app-button
+    [title]="'Login'"
+    [size]="'full-width'"
+    [isDisabled]="loginForm.invalid"
+    (clicked)="submitLogin(loginForm.value)"
+  ></app-button>
+</form>
