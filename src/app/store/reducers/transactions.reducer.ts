@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { TransactionsModel } from 'src/app/core/models';
+import { TransactionsModel } from 'src/app/shared/models';
 import { TransactionsActions } from '../actions';
 
 export interface ITransactionsState {

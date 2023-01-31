@@ -1,4 +1,4 @@
-import { TransactionsModel, UserModel } from '../models';
+import { TransactionsModel, UserModel } from '../../shared/models';
 
 export const mockedProfileData: UserModel.IUser = {
   firstName: 'Ignas',

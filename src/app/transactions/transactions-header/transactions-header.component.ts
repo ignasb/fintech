@@ -15,7 +15,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./transactions-header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TransactionsHeaderComponent implements OnChanges {
+export class TransactionsHeaderComponent {
   @Input() availableSelections: string[] = [];
 
   @Output() onRequestsToggle: EventEmitter<void> = new EventEmitter();
@@ -25,10 +25,6 @@ export class TransactionsHeaderComponent implements OnChanges {
   searchControl = new FormControl('');
 
   constructor() {}
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-  }
 
   togglePendingRequests(): void {
     this.onRequestsToggle.emit();

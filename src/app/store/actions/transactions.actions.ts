@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { TransactionsModel } from 'src/app/core/models';
+import { TransactionsModel } from 'src/app/shared/models';
 
 export const getTransactions = createAction(
   '[TRANSACTIONS] GET_TRANSACTIONS',

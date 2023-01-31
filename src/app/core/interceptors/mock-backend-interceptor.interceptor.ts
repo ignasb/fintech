@@ -13,7 +13,7 @@ import {
   mockedProfileData,
   mockedTransactions,
 } from './mocked-backend-interceptor.const';
-import { TransactionsModel } from '../models';
+import { TransactionsModel } from '../../shared/models';
 
 @Injectable()
 export class MockBackendInterceptorInterceptor implements HttpInterceptor {

@@ -6,7 +6,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { UserModel } from '../../models';
+import { UserModel } from '../../../shared/models';
 
 @Component({
   selector: 'app-profile-settings-overview',

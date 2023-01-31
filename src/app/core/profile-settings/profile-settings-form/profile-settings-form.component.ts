@@ -8,8 +8,8 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserModel } from '../../models';
-import { IUser } from '../../models/user.model';
+import { UserModel } from '../../../shared/models';
+import { IUser } from '../../../shared/models/user.model';
 import {
   digitsValidator,
   EFormFieldType,

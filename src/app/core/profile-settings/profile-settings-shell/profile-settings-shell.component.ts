@@ -3,12 +3,12 @@ import { Store } from '@ngrx/store';
 import { UserActions } from 'src/app/store/actions';
 import { IAppState } from 'src/app/store/reducers';
 import { UserSelectors } from 'src/app/store/selectors/user.selectors';
-import { UserModel } from '../models';
+import { UserModel } from '../../../shared/models';
 
 @Component({
   selector: 'app-profile-settings',
-  templateUrl: './profile-settings.component.html',
-  styleUrls: ['./profile-settings.component.scss'],
+  templateUrl: './profile-settings-shell.component.html',
+  styleUrls: ['./profile-settings-shell.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfileSettingsComponent implements OnInit {

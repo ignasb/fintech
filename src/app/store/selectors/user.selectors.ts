@@ -6,7 +6,7 @@ import {
   Store,
 } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
-import { UserModel } from 'src/app/core/models';
+import { UserModel } from 'src/app/shared/models';
 import { IAppState } from '../reducers';
 
 const getAppState = createFeatureSelector<IAppState>('appState');

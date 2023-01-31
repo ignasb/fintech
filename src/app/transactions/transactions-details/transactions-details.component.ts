@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { TransactionsModel } from 'src/app/core/models';
+import { TransactionsModel } from 'src/app/shared/models';
 
 @Component({
   selector: 'app-transactions-details',

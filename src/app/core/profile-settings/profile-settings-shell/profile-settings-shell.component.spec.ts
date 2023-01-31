@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProfileSettingsComponent } from './profile-settings.component';
+import { ProfileSettingsComponent } from './profile-settings-shell.component';
 
 describe('ProfileSettingsComponent', () => {
   let component: ProfileSettingsComponent;
@@ -8,9 +8,8 @@ describe('ProfileSettingsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProfileSettingsComponent ]
-    })
-    .compileComponents();
+      declarations: [ProfileSettingsComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ProfileSettingsComponent);
     component = fixture.componentInstance;

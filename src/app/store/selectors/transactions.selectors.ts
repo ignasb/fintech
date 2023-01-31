@@ -6,7 +6,7 @@ import {
   Store,
 } from '@ngrx/store';
 import { map, tap } from 'rxjs/operators';
-import { TransactionsModel } from 'src/app/core/models';
+import { TransactionsModel } from 'src/app/shared/models';
 import { IAppState } from '../reducers';
 
 const getAppState = createFeatureSelector<IAppState>('appState');

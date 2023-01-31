@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { tap } from 'rxjs/operators';
-import { UserModel } from 'src/app/core/models';
+import { UserModel } from 'src/app/shared/models';
 import { AppActions, UserActions } from '../actions';
 import { IAppState } from '../reducers';
 

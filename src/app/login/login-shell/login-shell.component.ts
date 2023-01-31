@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { UserModel } from 'src/app/core/models';
+import { UserModel } from 'src/app/shared/models';
 import { UserActions } from 'src/app/store/actions';
 import { IAppState } from 'src/app/store/reducers';
 import { UserSelectors } from 'src/app/store/selectors/user.selectors';

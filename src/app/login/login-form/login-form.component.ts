@@ -6,7 +6,7 @@ import {
   Output,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserModel } from 'src/app/core/models';
+import { UserModel } from 'src/app/shared/models';
 
 @Component({
   selector: 'app-login-form',

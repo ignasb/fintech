@@ -8,7 +8,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { IAppState } from 'src/app/store/reducers';
 import { UserSelectors } from 'src/app/store/selectors/user.selectors';
-import { UserModel } from '../models';
+import { UserModel } from '../../shared/models';
 import {
   availableLinks,
   ELinkType,

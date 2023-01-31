@@ -45,10 +45,9 @@ export class InputComponent {
     }
   }
 
-  constructor(private elRef: ElementRef, private cd: ChangeDetectorRef) {}
+  constructor(private elRef: ElementRef) {}
 
   onInputChanged(text: string): void {
-    console.log(text);
     this.inputChanged.emit(text);
   }
 
@@ -57,7 +56,6 @@ export class InputComponent {
       this.inputRef.nativeElement.value = item;
     }
     this.itemSelected.emit(item);
-    // this.cd.detectChanges();
     this.isDropdownVisible = false;
   }
 
